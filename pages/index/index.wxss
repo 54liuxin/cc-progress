@@ -1,0 +1,129 @@
+/* 页面整体白底 */
+page {
+  background-color: #fff;
+}
+
+/* 公共部分 */
+.progress-container {
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* 标题 */
+.goal-name {
+  font-size: 20px;
+  font-weight: normal;   /* 不加粗 */
+  margin-top: 50px;
+  margin-bottom: 100px;   /* 标题与进度条间距加大 */
+}
+
+/* 圆形进度条层级 */
+.circle-layer {
+  text-align: center;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 圆形进度条容器 */
+.circle-progress-container {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 50px;   /* 圆形进度条与进度值间距加大 */
+}
+
+
+.circle-text .percent {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a90e2;
+}
+.circle-text .days {
+  font-size: 12px;
+  color: #333;
+  margin-top: 3px;
+}
+
+/* 矩形进度条层级 */
+.rect-layer {
+  text-align: center;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 矩形进度条容器 */
+.rect-progress-container {
+  width: 100%;
+  max-width: 360px;
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 50px;   /* 矩形进度条与进度值间距加大 */
+}
+
+
+.rect-progress-bar {
+  height: 100%;
+  background-color: #4a90e2;
+}
+
+.rect-text .percent {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a90e2;
+}
+.rect-text .days {
+  font-size: 12px;
+  color: #333;
+  margin-top: 3px;
+}
+
+/* 设置为超链接风格的小字，靠右 */
+.settings-btn {
+  margin-top: 8px;       /* 跟进度文字保持一点间距 */
+  text-align: right;     /* 靠右对齐 */
+  padding-right: 20px;   /* 离容器右边留点空间 */
+  font-size: 12px;
+  color: #4a90e2;
+  text-decoration: underline;
+}
+
+
+.settings-btn button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #4a90e2;
+  text-decoration: underline;
+}
+
+
+/* 进度文字整体 */
+.circle-text,
+.rect-text {
+  margin-top: 10px;      /* 进度值整体往下拉 */
+}
+
+
+.circle-text .percent,
+.rect-text .percent {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.circle-text .days,
+.rect-text .days {
+  font-size: 12px;
+  color: #333;
+  margin-top: 6px;       /* 百分比和天数的间距加大 */
+}

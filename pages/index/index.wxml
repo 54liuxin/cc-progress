@@ -1,0 +1,34 @@
+<view class="progress-container">
+  <view class="goal-name">{{goalName}}</view>
+
+  <!-- 圆形进度条层级 -->
+  <view class="circle-layer" wx:if="{{shape === 'circle'}}">
+    <view class="circle-progress-container">
+      <canvas id="circleProgress" type="2d"
+        style="width:150px;height:150px;"
+        width="150" height="150"></canvas>
+
+</view>
+
+    <view class="circle-text">
+      <view class="percent">{{progressPercent}}%</view>
+      <view class="days">{{currentDay}}/{{targetDay}}</view>
+    </view>
+  </view>
+
+  <!-- 矩形进度条层级 -->
+  <view class="rect-layer" wx:elif="{{shape === 'rect'}}">
+    <view class="rect-progress-container">
+      <view class="rect-progress-bar" style="width: {{progressWidth}}px;"></view>
+    </view>
+    <view class="rect-text">
+      <view class="percent">{{progressPercent}}%</view>
+      <view class="days">{{currentDay}}/{{targetDay}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="settings-btn" bindtap="openSettings">
+  设置
+</view>
+

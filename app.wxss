@@ -1,0 +1,12 @@
+/* app.wxss */
+page {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
