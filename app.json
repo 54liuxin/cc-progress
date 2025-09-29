@@ -6,7 +6,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#667eea",
-    "navigationBarTitleText": "进度追踪",
+    "navigationBarTitleText": "icc-progress",
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
