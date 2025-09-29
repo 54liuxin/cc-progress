@@ -1,78 +1,114 @@
+// pages/settings/settings.js
 Page({
-    data: {
-      goalName: '',     // 目标名称
-      startDate: '',    // 开始日期
-      targetDay: 1,     // 目标天数
-      mode: 'countup',  // 模式：计时 or 倒计时
-      shape: 'rect',    // 形状：矩形 or 圆形
-    },
-  
-    onLoad() {
-      // 从 localStorage 获取数据，如果有的话
-      const data = wx.getStorageSync('progressData');
-      if (data) {
-        this.setData({
-          goalName: data.goalName || '',
-          startDate: data.startDate || '',
-          targetDay: data.targetDay || 1,
-          mode: data.mode || 'countup',
-          shape: data.shape || 'rect',
-        });
-      }
-    },
-  
-    // 目标名称输入框变化
-    onGoalNameChange(e) {
-      this.setData({ goalName: e.detail.value });
-    },
-  
-    // 开始日期选择器变化
-    onStartDateChange(e) {
-      this.setData({ startDate: e.detail.value });
-    },
-  
-    // 目标天数变化，确保为正整数
-    onTargetDayChange(e) {
-      let targetDay = parseInt(e.detail.value, 10);  // 转换为整数
-      if (targetDay <= 0 || isNaN(targetDay)) {
-        targetDay = 1;  // 如果是负数或非数字，设置为1
-      }
-      this.setData({ targetDay: targetDay });
-    },
-  
-    // 模式变化
-    onModeChange(e) {
-      this.setData({ mode: e.detail.value });
-    },
-  
-    // 形状变化
-    onShapeChange(e) {
-      this.setData({ shape: e.detail.value });
-    },
-  
-    // 保存设置
-    saveSettings() {
-      const { goalName, startDate, targetDay, mode, shape } = this.data;
-  
-      // 保存数据到 localStorage
-      const progressData = {
+  data: {
+    goalName: '我的目标',
+    startDate: '2025-01-01',
+    targetDays: 30,
+    mode: 'countup',
+    shape: 'rect'
+  },
+
+  onLoad() {
+    this.loadData();
+  },
+
+  loadData() {
+    try {
+      const goalName = wx.getStorageSync('goalName') || '我的目标';
+      const startDate = wx.getStorageSync('startDate') || new Date().toISOString().slice(0, 10);
+      const targetDays = wx.getStorageSync('targetDays') || 30;
+      const mode = wx.getStorageSync('mode') || 'countup';
+      const shape = wx.getStorageSync('shape') || 'rect';
+
+      this.setData({
         goalName,
         startDate,
-        targetDay,
+        targetDays: Number(targetDays),
         mode,
-        shape,
-        lastUpdate: new Date().toDateString(),
-      };
-  
-      wx.setStorageSync('progressData', progressData);  // 保存数据
-  
-      // 保存完成后跳转回首页
-      wx.navigateBack();  // 返回首页
-    },
-  
-    // 取消设置
-    cancelSettings() {
-      wx.navigateBack();  // 如果点击取消，返回首页
-    },
-  });
-  
+        shape
+      });
+    } catch (e) {
+      console.error('读取存储数据失败', e);
+    }
+  },
+
+  onGoalNameInput(e) {
+    this.setData({
+      goalName: e.detail.value
+    });
+  },
+
+  onStartDateChange(e) {
+    this.setData({
+      startDate: e.detail.value
+    });
+  },
+
+  onTargetDaysInput(e) {
+    this.setData({
+      targetDays: parseInt(e.detail.value) || 0
+    });
+  },
+
+  onModeChange(e) {
+    this.setData({
+      mode: e.detail.value
+    });
+  },
+
+  onShapeChange(e) {
+    this.setData({
+      shape: e.detail.value
+    });
+  },
+
+  saveSettings() {
+    const { goalName, startDate, targetDays, mode, shape } = this.data;
+
+    if (!goalName.trim()) {
+      wx.showToast({
+        title: '请输入目标名称',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
+
+    if (targetDays <= 0) {
+      wx.showToast({
+        title: '目标天数必须大于0',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
+
+    try {
+      // 保存到本地存储
+      wx.setStorageSync('goalName', goalName);
+      wx.setStorageSync('startDate', startDate);
+      wx.setStorageSync('targetDays', targetDays);
+      wx.setStorageSync('mode', mode);
+      wx.setStorageSync('shape', shape);
+
+      // 显示保存成功的提示
+      wx.showToast({
+        title: '保存成功',
+        icon: 'success',
+        duration: 2000
+      });
+
+      // 返回首页
+      setTimeout(() => {
+        wx.navigateBack();
+      }, 2000);
+    } catch (e) {
+      console.error('保存设置失败', e);
+      wx.showToast({
+        title: '保存失败',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  }
+})

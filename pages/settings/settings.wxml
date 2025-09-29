@@ -1,55 +1,60 @@
-<view class="settings-container">
-    <!-- 目标名称 -->
+<view class="container">
+  <view class="header">
+    <!-- 顶部区域已调整高度 -->
+  </view>
+  
+  <view class="settings-panel">
     <view class="form-item">
-        <text class="label">目标名称</text>
-        <input class="input" type="text" value="{{goalName}}" bindinput="onGoalNameChange" placeholder="" />
+      <text class="label">目标名称</text>
+      <input class="input" value="{{goalName}}" bindinput="onGoalNameInput" />
     </view>
 
-    <!-- 开始日期 -->
     <view class="form-item">
-        <text class="label">开始日期</text>
-        <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
-            <view class="input">
-                <text>{{startDate || '请选择日期'}}</text>
-            </view>
-        </picker>
+      <text class="label">开始日期</text>
+      <picker mode="date" value="{{startDate}}" start="2020-01-01" end="2030-12-31" bindchange="onStartDateChange">
+        <view class="picker">
+          {{startDate}}
+        </view>
+      </picker>
     </view>
 
-    <!-- 目标天数 -->
     <view class="form-item">
-        <text class="label">目标天数</text>
-        <input class="input" type="number" value="{{targetDay}}" bindinput="onTargetDayChange" placeholder="输入目标天数" />
+      <text class="label">目标天数</text>
+      <input class="input" type="number" value="{{targetDays}}" bindinput="onTargetDaysInput" />
     </view>
 
-    <!-- 模式选择 -->
     <view class="form-item">
-        <text class="label">模式</text>
-        <radio-group bindchange="onModeChange" class="radio-group">
-            <label class="radio-item">
-                <radio value="countup" checked="{{mode === 'countup'}}" /> 计时
-            </label>
-            <label class="radio-item">
-                <radio value="countdown" checked="{{mode === 'countdown'}}" /> 倒计时
-            </label>
+      <text class="label">模式选择</text>
+      <view class="radio-group">
+        <radio-group bindchange="onModeChange" class="radio-container">
+          <label class="radio-item">
+            <radio value="countup" checked="{{mode === 'countup'}}" color="#4a90e2"/>
+            <text>计时</text>
+          </label>
+          <label class="radio-item">
+            <radio value="countdown" checked="{{mode === 'countdown'}}" color="#4a90e2"/>
+            <text>倒计时</text>
+          </label>
         </radio-group>
+      </view>
     </view>
 
-    <!-- 形状选择 -->
     <view class="form-item">
-        <text class="label">形状</text>
-        <radio-group bindchange="onShapeChange" class="radio-group">
-            <label class="radio-item">
-                <radio value="rect" checked="{{shape === 'rect'}}" /> 矩形
-            </label>
-            <label class="radio-item">
-                <radio value="circle" checked="{{shape === 'circle'}}" /> 圆形
-            </label>
+      <text class="label">形状选择</text>
+      <view class="radio-group">
+        <radio-group bindchange="onShapeChange" class="radio-container">
+          <label class="radio-item">
+            <radio value="rect" checked="{{shape === 'rect'}}" color="#4a90e2"/>
+            <text>矩形</text>
+          </label>
+          <label class="radio-item">
+            <radio value="circle" checked="{{shape === 'circle'}}" color="#4a90e2"/>
+            <text>圆形</text>
+          </label>
         </radio-group>
+      </view>
     </view>
 
-    <!-- 按钮 -->
-    <view class="buttons">
-        <button class="button save" bindtap="saveSettings">保存</button>
-        <button class="button cancel" bindtap="cancelSettings">取消</button>
-    </view>
+    <button class="save-btn" bindtap="saveSettings">保存设置</button>
+  </view>
 </view>

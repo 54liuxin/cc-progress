@@ -4,8 +4,11 @@
     "pages/settings/settings"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "进度条",
-    "navigationBarTextStyle": "black"
-  }
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "进度追踪",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }

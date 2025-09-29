@@ -1,129 +1,250 @@
-/* 页面整体白底 */
-page {
-  background-color: #fff;
-}
-
-/* 公共部分 */
-.progress-container {
-  padding: 20px;
-  background-color: #fff;
-  text-align: center;
-}
-
-/* 标题 */
-.goal-name {
-  font-size: 20px;
-  font-weight: normal;   /* 不加粗 */
-  margin-top: 50px;
-  margin-bottom: 100px;   /* 标题与进度条间距加大 */
-}
-
-/* 圆形进度条层级 */
-.circle-layer {
-  text-align: center;
-  min-height: 220px;
+/* pages/index/index.wxss */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 设置链接 */
+.settings-link {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 8vw;
+  height: 8vw;
+  min-width: 40rpx;
+  min-height: 40rpx;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+
+
+/* 进度容器 */
+.progress-container {
+  width: 100%;
+  max-width: 90vw;
+  margin: 0vh 0; /* 移除外边距 */
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6vh; /* 进一步减小最小高度 */
+}
+
+/* 矩形进度条样式 */
+.rect-progress-bg {
+  width: 100%;
+  height: 4vw; /* 稍微增加高度使更明显 */
+  min-height: 14rpx;
+  background-color: #e0e0e0;
+  border-radius: 1.5vw;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0.3vh 0.6vh rgba(0, 0, 0, 0.1);
+}
+
+.rect-progress-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 1.5vw;
+  position: relative;
+}
+
+.rect-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
 
 /* 圆形进度条容器 */
-.circle-progress-container {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 50px;   /* 圆形进度条与进度值间距加大 */
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw; /* 固定宽度 */
+  height: 70vw; /* 与宽度相同，确保正方形 */
+  max-width: 80vh; /* 限制最大宽度 */
+  max-height: 80vh; /* 与最大宽度相同 */
+  margin: 2vh auto; /* 居中显示 */
+  box-sizing: border-box;
+  flex: none;
+}
+
+.circle-progress {
+  width: 100%; /* 占满父容器 */
+  height: 100%; /* 占满父容器 */
+  display: block;
 }
 
 
-.circle-text .percent {
-  font-size: 16px;
+
+/* 目标名称 - 简化居中 */
+.goal-name {
+  font-size: 4.5vw;
   font-weight: bold;
-  color: #4a90e2;
-}
-.circle-text .days {
-  font-size: 12px;
   color: #333;
-  margin-top: 3px;
+  margin: 10vh 0 0 0; /* 简化margin设置 */
+  text-align: center;
+  padding: 0 4vw;
 }
 
-/* 矩形进度条层级 */
-.rect-layer {
-  text-align: center;
-  min-height: 220px;
+/* 进度信息 - 简化居中 */
+.progress-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-/* 矩形进度条容器 */
-.rect-progress-container {
-  width: 100%;
-  max-width: 360px;
-  height: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 50px;   /* 矩形进度条与进度值间距加大 */
+  margin: 0 0 30vh 0; /* 简化margin设置 */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1vw 2vw;
+  border-radius: 1.5vw;
+  box-shadow: 0 0.3vh 1vh rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 
-.rect-progress-bar {
-  height: 100%;
-  background-color: #4a90e2;
-}
-
-.rect-text .percent {
-  font-size: 16px;
+.progress-text {
+  font-size: 4.5vw;
   font-weight: bold;
   color: #4a90e2;
-}
-.rect-text .days {
-  font-size: 12px;
-  color: #333;
-  margin-top: 3px;
+  margin-bottom: 0vh; /* 移除底部边距 */
+  min-height: 3vh;
 }
 
-/* 设置为超链接风格的小字，靠右 */
-.settings-btn {
-  margin-top: 8px;       /* 跟进度文字保持一点间距 */
-  text-align: right;     /* 靠右对齐 */
-  padding-right: 20px;   /* 离容器右边留点空间 */
-  font-size: 12px;
-  color: #4a90e2;
-  text-decoration: underline;
+.progress-details {
+  font-size: 2.8vw;
+  color: #666;
+  min-height: 1.8vh;
 }
 
-
-.settings-btn button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-size: 12px;
-  color: #4a90e2;
-  text-decoration: underline;
+/* 响应式设计 */
+@media (min-width: 480px) and (min-height: 600px) {
+  .goal-name {
+    font-size: 24rpx;
+    margin: 3vh 0 0rpx 0; /* 向下调整 */
+  }
+  
+  .rect-progress-bg {
+    height: 20rpx; /* 稍微增加高度 */
+  }
+  
+  .rect-progress-fill {
+    border-radius: 10rpx;
+  }
+  
+  .rect-progress-fill::after {
+    border-radius: 10rpx;
+  }
+  
+  .circle-progress {
+    width: 240rpx;
+    height: 240rpx;
+  }
+  
+  .progress-text {
+    font-size: 26rpx;
+  }
+  
+  .progress-details {
+    font-size: 14rpx;
+  }
+  
+  .progress-info {
+    padding: 10rpx 20rpx;
+    margin: 0rpx 0 3vh; /* 向上调整 */
+    border-radius: 12rpx;
+  }
+  
+  .progress-container {
+    margin: 0rpx 0; /* 移除外边距 */
+    min-height: 5vh;
+  }
+  
+  .circle-container {
+    margin: 0rpx 0; /* 移除外边距 */
+    min-height: 5vh;
+  }
+  
+  .settings-link {
+    top: 20rpx;
+    right: 20rpx;
+    width: 50rpx;
+    height: 50rpx;
+  }
+  
+  .container {
+    padding: 20rpx;
+  }
 }
 
-
-/* 进度文字整体 */
-.circle-text,
-.rect-text {
-  margin-top: 10px;      /* 进度值整体往下拉 */
-}
-
-
-.circle-text .percent,
-.rect-text .percent {
-  font-size: 16px;
-  font-weight: bold;
-  color: #4a90e2;
-}
-
-.circle-text .days,
-.rect-text .days {
-  font-size: 12px;
-  color: #333;
-  margin-top: 6px;       /* 百分比和天数的间距加大 */
+@media (min-width: 768px) and (min-height: 800px) {
+  .goal-name {
+    font-size: 26rpx;
+    margin: 3vh 0 0rpx 0; /* 向下调整 */
+  }
+  
+  .rect-progress-bg {
+    height: 24rpx; /* 稍微增加高度 */
+  }
+  
+  .rect-progress-fill {
+    border-radius: 12rpx;
+  }
+  
+  .rect-progress-fill::after {
+    border-radius: 12rpx;
+  }
+  
+  .circle-progress {
+    width: 280rpx;
+    height: 280rpx;
+  }
+  
+  .progress-text {
+    font-size: 30rpx;
+  }
+  
+  .progress-details {
+    font-size: 16rpx;
+  }
+  
+  .progress-info {
+    padding: 15rpx 25rpx;
+    margin: 0rpx 0 3vh; /* 向上调整 */
+    border-radius: 14rpx;
+  }
+  
+  .progress-container {
+    margin: 0rpx 0; /* 移除外边距 */
+    min-height: 6vh;
+  }
+  
+  .circle-container {
+    margin: 0rpx 0; /* 移除外边距 */
+    min-height: 6vh;
+  }
+  
+  .settings-link {
+    top: 25rpx;
+    right: 25rpx;
+    width: 55rpx;
+    height: 55rpx;
+  }
+  
+  .container {
+    padding: 25rpx;
+  }
 }

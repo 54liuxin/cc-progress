@@ -1,15 +1,18 @@
-// app.js
 App({
   globalData: {
-    goalName: '',
-    startDate: '',
-    targetDay: 10,
+    goalName: '我的目标',
+    targetDay: 30,
+    currentDay: 0,
     mode: 'countup',
     shape: 'rect',
-    progressPercent: 0,
-    currentDay: 0,
+    startDate: ''
   },
   onLaunch() {
-    // 初始化逻辑
+    // 小程序启动时检查是否需要自动增长
+    // this.checkAndIncrementDay();
   },
-});
+  // 检查并增加天数
+  checkAndIncrementDay() {
+    // 这个函数现在不再需要，因为进度计算逻辑已更改
+  }
+})

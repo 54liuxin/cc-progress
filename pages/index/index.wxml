@@ -1,34 +1,34 @@
-<view class="progress-container">
+<view class="container">
+  <!-- 设置链接 -->
+  <navigator class="settings-link" url="/pages/settings/settings" style="position: absolute; left: 675rpx; top: 25rpx">
+    <icon type="settings" size="20" color="#fff"></icon>
+  </navigator>
+
+  <!-- 目标名称 -->
   <view class="goal-name">{{goalName}}</view>
 
-  <!-- 圆形进度条层级 -->
-  <view class="circle-layer" wx:if="{{shape === 'circle'}}">
-    <view class="circle-progress-container">
-      <canvas id="circleProgress" type="2d"
-        style="width:150px;height:150px;"
-        width="150" height="150"></canvas>
-
-</view>
-
-    <view class="circle-text">
-      <view class="percent">{{progressPercent}}%</view>
-      <view class="days">{{currentDay}}/{{targetDay}}</view>
+  <!-- 矩形进度条 -->
+  <view class="progress-container" wx:if="{{shape === 'rect'}}">
+    <view class="rect-progress-bg">
+      <view class="rect-progress-fill" style="width: {{progressPercent}}%; background-color: {{mode === 'countup' ? '#4a90e2' : '#ff6b6b'}};"></view>
     </view>
   </view>
 
-  <!-- 矩形进度条层级 -->
-  <view class="rect-layer" wx:elif="{{shape === 'rect'}}">
-    <view class="rect-progress-container">
-      <view class="rect-progress-bar" style="width: {{progressWidth}}px;"></view>
-    </view>
-    <view class="rect-text">
-      <view class="percent">{{progressPercent}}%</view>
-      <view class="days">{{currentDay}}/{{targetDay}}</view>
-    </view>
+  <!-- 圆形进度条 -->
+  <view class="progress-container circle-container" wx:if="{{shape === 'circle'}}">
+    <canvas 
+      class="circle-progress" 
+      id="circleProgress"
+      canvas-id="circleProgress"
+      width="{{canvasSize}}"
+      height="{{canvasSize}}"
+      bindtap="onCanvasTap">
+    </canvas>
+  </view>
+
+  <!-- 进度信息 -->
+  <view class="progress-info">
+    <text class="progress-text">{{progressPercent}}%</text>
+    <text class="progress-details">{{currentValue}}/{{targetValue}}</text>
   </view>
 </view>
-
-<view class="settings-btn" bindtap="openSettings">
-  设置
-</view>
-

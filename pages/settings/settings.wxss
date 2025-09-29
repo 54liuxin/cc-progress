@@ -1,69 +1,308 @@
-/* 设置页面样式 */
-.settings-container {
-  padding: 20px;
+/* pages/settings/settings.wxss */
+.container {
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 3vh 5vw 2vh; /* 再减少顶部边距约20px (从4.5vh调整到3vh) */
+  text-align: center;
+  min-height: 8vh;
+}
+
+.settings-panel {
   background-color: #fff;
+  border-radius: 2.5vw 2.5vw 0 0;
+  padding: 2vh 12vw;
+  flex: 1;
+  box-shadow: 0 -1vh 3vh rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: calc(100% - 24vw);
+  margin: 0 12vw;
 }
 
 .form-item {
-  margin-bottom: 20px; /* 每个表单项的间距 */
+  margin-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 8vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .label {
-  font-size: 14px;
+  display: block;
+  font-size: 4vw;
   color: #333;
-  margin-bottom: 5px; /* label与输入框之间的间距 */
+  margin-bottom: 1.5vh;
+  font-weight: 500;
+  min-height: 3vh;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .input {
-  width: 100%;  /* 设置输入框的宽度为100% */
-  max-width: 450px; /* 限制最大宽度 */
-  padding: 12px;  /* 增加 padding 高度 */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;  /* 增加字体大小 */
+  width: 100%;
+  padding: 2vw;
+  border: 0.2vw solid #e0e0e0;
+  border-radius: 2vw;
+  font-size: 3.8vw;
   box-sizing: border-box;
-  margin-bottom: 10px;  /* 增加底部间距，避免按钮过于紧凑 */
-  height: 40px;  /* 调整输入框高度 */
-  line-height: 16px;  /* 文字垂直居中 */
+  background-color: #fafafa;
+  height: 6vh;
+  line-height: 6vh;
+  vertical-align: middle;
+  min-height: 5vh;
   display: flex;
-  align-items: center; /* 保证输入框内容垂直居中 */
+  align-items: center;
+  margin: 0;
+}
+
+.input input {
+  line-height: normal;
+  vertical-align: middle;
+  flex: 1;
+  text-align: left;
+  padding-left: 2vw;
+}
+
+.input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.picker {
+  width: 100%;
+  padding: 2vw;
+  border: 0.2vw solid #e0e0e0;
+  border-radius: 2vw;
+  font-size: 3.8vw;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  color: #666;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  min-height: 5vh;
+  margin: 0;
+  justify-content: flex-start;
+  padding-left: 2vw;
 }
 
 .radio-group {
+  width: 100%;
+  padding: 0;
+}
+
+.radio-container {
   display: flex;
-  justify-content: center; /* 单选框的选项居中 */
-  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 2vw;
+  padding: 1vh;
+  box-sizing: border-box;
+  min-height: 7vh;
 }
 
 .radio-item {
-  display: inline-block;
-  margin-right: 15px;
-  font-size: 12px; /* 调整字体大小 */
+  display: flex;
+  align-items: center;
+  font-size: 3.5vw;
+  padding: 1vh 2vw;
+  flex: 1;
+  justify-content: center;
+  border-radius: 1.5vw;
+  transition: all 0.3s;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 5vh;
 }
 
-.buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+.radio-item radio {
+  transform: scale(1.3);
+  margin-right: 2vw;
+  flex-shrink: 0;
 }
 
-.button {
-  display: flex;
-  justify-content: center;  /* 水平居中按钮文字 */
-  align-items: center;  /* 垂直居中按钮文字 */
-  padding: 8px 15px;
-  background-color: #4a90e2;
+.save-btn {
+  width: 100%;
+  padding: 2vh;
+  font-size: 4vw;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  border-radius: 5px;
-  font-size: 14px;
-  width: 48%;  /* 使两个按钮的宽度一致 */
-  height: 40px;  /* 限制按钮高度，避免过大 */
+  border: none;
+  border-radius: 2vw;
+  cursor: pointer;
+  margin-top: 2vh;
+  font-weight: bold;
+  letter-spacing: 0.2vw;
+  box-shadow: 0 1vh 2vh rgba(102, 126, 234, 0.3);
+  min-height: 7vh;
+  margin-bottom: 2vh;
+  margin: 2vh 0;
 }
 
-.save {
-  background-color: #4a90e2;
+.save-btn:active {
+  transform: translateY(0.2vh);
+  box-shadow: 0 0.5vh 1.5vh rgba(102, 126, 234, 0.2);
 }
 
-.cancel {
-  background-color: #ccc; /* 更改取消按钮的颜色 */
+/* 响应式设计 */
+@media (min-width: 480px) and (min-height: 600px) {
+  .container {
+    padding: 0;
+  }
+  
+  .header {
+    padding: 10rpx 40rpx 15rpx; /* 再减少顶部边距约20px (从25rpx调整到10rpx) */
+    min-height: 60rpx;
+  }
+  
+  .settings-panel {
+    padding: 30rpx 150rpx;
+    max-width: 750rpx;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    width: calc(100% - 300rpx);
+    margin-left: 150rpx;
+    margin-right: 150rpx;
+  }
+  
+  .form-item {
+    margin-bottom: 30rpx;
+  }
+  
+  .label {
+    font-size: 32rpx;
+    margin-bottom: 15rpx;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .input, .picker {
+    padding: 25rpx;
+    font-size: 28rpx;
+    border-radius: 15rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin: 0;
+  }
+  
+  .input input {
+    text-align: left;
+    padding-left: 25rpx;
+  }
+  
+  .picker {
+    justify-content: flex-start;
+    padding-left: 25rpx;
+  }
+  
+  .radio-group {
+    padding: 0;
+  }
+  
+  .radio-item {
+    font-size: 26rpx;
+    border-radius: 10rpx;
+    padding: 15rpx 10rpx;
+  }
+  
+  .radio-container {
+    border-radius: 15rpx;
+    padding: 10rpx;
+  }
+  
+  .save-btn {
+    padding: 25rpx;
+    font-size: 32rpx;
+    border-radius: 15rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin: 20rpx 0;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 800px) {
+  .container {
+    padding: 0;
+  }
+  
+  .header {
+    padding: 15rpx 40rpx 20rpx; /* 再减少顶部边距约20px (从35rpx调整到15rpx) */
+    min-height: 80rpx;
+  }
+  
+  .settings-panel {
+    padding: 40rpx 180rpx;
+    max-width: 750rpx;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    width: calc(100% - 360rpx);
+    margin-left: 180rpx;
+    margin-right: 180rpx;
+  }
+  
+  .form-item {
+    margin-bottom: 40rpx;
+  }
+  
+  .label {
+    font-size: 36rpx;
+    margin-bottom: 20rpx;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .input, .picker {
+    padding: 30rpx;
+    font-size: 32rpx;
+    border-radius: 15rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 0;
+  }
+  
+  .input input {
+    text-align: left;
+    padding-left: 30rpx;
+  }
+  
+  .picker {
+    justify-content: flex-start;
+    padding-left: 30rpx;
+  }
+  
+  .radio-group {
+    padding: 0;
+  }
+  
+  .radio-item {
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    padding: 15rpx 10rpx;
+  }
+  
+  .radio-container {
+    border-radius: 15rpx;
+    padding: 10rpx;
+  }
+  
+  .save-btn {
+    padding: 30rpx;
+    font-size: 36rpx;
+    border-radius: 15rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin: 20rpx 0;
+  }
 }

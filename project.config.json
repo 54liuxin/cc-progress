@@ -1,41 +1,74 @@
 {
-  "compileType": "miniprogram",
-  "libVersion": "3.10.2",
+  "description": "项目配置文件",
   "packOptions": {
-    "ignore": [],
-    "include": []
+    "ignore": []
   },
   "setting": {
+    "bundle": false,
+    "userConfirmedBundleSwitch": false,
+    "urlCheck": true,
+    "scopeDataCheck": false,
     "coverView": true,
     "es6": true,
     "postcss": true,
+    "compileHotReLoad": false,
+    "preloadBackgroundData": false,
     "minified": true,
-    "enhance": true,
-    "showShadowRootInWxmlPanel": true,
-    "packNpmRelationList": [],
+    "autoAudits": false,
+    "newFeature": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "useIsolateContext": true,
+    "nodeModules": false,
+    "enhance": false,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "compileWorklet": false,
-    "uglifyFileName": false,
-    "uploadWithSourceMap": true,
+    "enableEngineNative": false,
+    "useStaticServer": true,
+    "showShadowRootInWxmlPanel": true,
     "packNpmManually": false,
-    "minifyWXSS": true,
-    "minifyWXML": true,
-    "localPlugins": false,
-    "condition": false,
-    "swc": false,
-    "disableSWC": true,
-    "disableUseStrict": false,
-    "useCompilerPlugins": false
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
-  "condition": {},
-  "editorSetting": {
-    "tabIndent": "auto",
-    "tabSize": 2
+  "compileType": "miniprogram",
+  "libVersion": "2.19.1",
+  "appid": "wxe5f52b6fbfe30a5e",
+  "projectname": "time-progress",
+  "debugOptions": {
+    "hidedInDevtools": []
   },
-  "appid": "wxb1ed8355d4e9134d",
-  "simulatorPluginLibVersion": {}
+  "scripts": {},
+  "staticServerOptions": {
+    "baseURL": "",
+    "servePath": ""
+  },
+  "isGameTourist": false,
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": []
+    }
+  }
 }
